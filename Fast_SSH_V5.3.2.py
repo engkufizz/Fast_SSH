@@ -107,7 +107,8 @@ def ensure_log_dir():
     return d
 
 BASE_DIR = app_dir()
-DB_FILE = resource_path("ne_database.db")  # Ensure this file is added when packaging
+# app_dir() points to where the .exe is located, not the temp folder
+DB_FILE = os.path.join(app_dir(), "ne_database.db") 
 LOG_DIR = ensure_log_dir()
 CONFIG_FILE = os.path.join(user_data_dir(), "settings.json")
 
